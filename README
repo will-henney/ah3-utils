@@ -1,0 +1,4 @@
+Suite of programs for analysis of datacubes from the Capreole+C^2 Ray radiation-HD code
+
+This includes reading and writing of Garrelt Mellema's AH3 file format. 
+ 
