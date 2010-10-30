@@ -1,0 +1,87 @@
+
+* AH3 Utilities
+
+Suite of programs for analysis of datacubes from the Capreole+C^2 Ray radiation-HD code
+
+This includes reading and writing of Garrelt Mellema's AH3 file format. 
+ 
+** End-user programs
+
+*** ah3test 
+Check that an AH3 file can be read and re-written
+
+*** ah3tofits
+Convert an AH3 file to a set of FITS files (one for each physical variable)
+
+**** Example of ah3tofits usage
+#+BEGIN_EXAMPLE
+will@robbie:results-pdr$ datadir=. ; dateid=512_2010 ; runid=3 ; timeid=1
+will@robbie:results-pdr$ printf '%s\n' $datadir $dateid $runid $timeid | ../ah3-utils/src/ah3tofits
+ Root directory?
+ Date ID (e.g., 29112005)
+ Run ID (e.g., a)
+ Time ID (e.g., 70)
+ Reading from AH3D file 512_2010_3_0001.ah3
+ &HDR_NAMELIST
+ HDR%BANNER  = Capreole (F90) 3D Hydrodynamics                                                 ,
+ HDR%NROFDIM =           3,
+ HDR%NROFVARS        =           7,
+ HDR%NROFGRIDS       =           1,
+ HDR%REFINEMENTFACTOR        =           1,
+ HDR%FRAMENR =          10,
+ HDR%GAMMA   =   1.66666666666667     ,
+ HDR%TIME    =   31557600000.0000
+ /
+         512         512         512  1.205468793090867E+016
+  1.205468793090867E+016  1.205468793090867E+016  2.410937586181734E+016
+  2.410937586181734E+016  2.410937586181734E+016           1
+Reading variable #1
+Reading variable #2
+Reading variable #3
+Reading variable #4
+Reading variable #5
+Reading variables #6 to #7
+ maximum density is   9.415811621388648E-018
+ at          254         306         334
+will@robbie:results-pdr$ ls -lh  ${dateid}_${runid}*.fits
+-rw-r--r-- 1 will 60001 513M Oct 30 11:04 512_2010_3_0001d.fits
+-rw-r--r-- 1 will 60001 513M Oct 30 11:09 512_2010_3_0001p.fits
+-rw-r--r-- 1 will 60001 513M Oct 30 11:04 512_2010_3_0001u.fits
+-rw-r--r-- 1 will 60001 513M Oct 30 11:06 512_2010_3_0001v.fits
+-rw-r--r-- 1 will 60001 513M Oct 30 11:07 512_2010_3_0001w.fits
+-rw-r--r-- 1 will 60001 513M Oct 30 11:09 512_2010_3_0001x.fits
+#+END_EXAMPLE
+
+*** ah3uniform 
+Take an AH3 file and makes it uniform (average density, average energy, and all velocities zeroed).
+
+*** ah3doctor
+Remove some mass from the center of the grid
+
+*** ah3rebin
+Rebin an AH3 file to half the resolution
+
+** Support modules
+*** ah3mod
+Read and write AH3 files. Note that multi-node MPI files are not
+supported (yet). 
+*** wfitsutils
+Read and write FITS files
+
+** Dependencies
+=ah3tofits= (via =wfitsutils=) depends on the cfitsio library 
+
+*** Fedora
+#+BEGIN_SRC bash
+sudo yum install cfitsio
+#+END_SRC
+
+*** Other
+Install from [[http://freshmeat.net/projects/cfitsio][source]] 
+
+** Plans
+
+*** TODO Break out wfitsutils.f90 into a submodule
+Would make sense, since I use it in other projects too. But I need to
+learn how git submodules work. They look a bit scary. 
+*** TODO Support MPI version of AH3 file format
