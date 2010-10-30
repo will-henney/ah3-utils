@@ -1,5 +1,6 @@
 F90C=gfortran
 F90FLAGS=-O3
+LFITS=/usr/local/lib/libcfitsio.a
 -include local.mk # optionally override compiler and flags with this file
 
 EXECS= \

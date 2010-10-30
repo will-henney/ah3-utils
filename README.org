@@ -1,0 +1,20 @@
+
+* AH3 Utilities
+
+Suite of programs for analysis of datacubes from the Capreole+C^2 Ray radiation-HD code
+
+This includes reading and writing of Garrelt Mellema's AH3 file format. 
+ 
+** Included programs
+
++ ah3test :: checks that an AH3 file can be read and re-written
+
++ ah3tofits :: convert an AH3 file to a set of FITS files (one for
+               each physical variable)
+
++ ah3uniform :: Takes an AH3 file and makes it uniform (average
+                density, average energy, nd all velocities zeroed). 
+
++ ah3doctor :: Remove some mass from the center of the grid
+
++ ah3rebin :: Rebin an AH3 file to half the resolution
