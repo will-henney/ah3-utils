@@ -1,0 +1,11 @@
+# To modify the compiler and flags, copy this file to local.mk 
+#
+# Uncomment some or all of the following as appropriate, or make up
+# your own 
+#
+# ################## Linux X64, Intel Fortran 11 ##################
+# 
+# F90C=ifort
+# LFITS=-Bdynamic /usr/lib64/libcfitsio.so.0
+#
+# #################################################################
