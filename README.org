@@ -5,16 +5,44 @@ Suite of programs for analysis of datacubes from the Capreole+C^2 Ray radiation-
 
 This includes reading and writing of Garrelt Mellema's AH3 file format. 
  
-** Included programs
+** End-user programs
 
-+ ah3test :: checks that an AH3 file can be read and re-written
+*** ah3test 
+Check that an AH3 file can be read and re-written
 
-+ ah3tofits :: convert an AH3 file to a set of FITS files (one for
-               each physical variable)
+*** ah3tofits
+Convert an AH3 file to a set of FITS files (one for each physical variable)
 
-+ ah3uniform :: Takes an AH3 file and makes it uniform (average
-                density, average energy, nd all velocities zeroed). 
+*** ah3uniform 
+Take an AH3 file and makes it uniform (average density, average energy, and all velocities zeroed).
 
-+ ah3doctor :: Remove some mass from the center of the grid
+*** ah3doctor
+Remove some mass from the center of the grid
 
-+ ah3rebin :: Rebin an AH3 file to half the resolution
+*** ah3rebin
+Rebin an AH3 file to half the resolution
+
+** Support modules
+*** ah3mod
+Read and write AH3 files. Note that multi-node MPI files are not
+supported (yet). 
+*** wfitsutils
+Read and write FITS files
+
+** Dependencies
+=ah3tofits= (via =wfitsutils=) depends on the cfitsio library 
+
+*** Fedora
+#+begin_src bash
+sudo yum install cfitsio
+#+end_src
+
+*** Other
+Install from [[http://freshmeat.net/projects/cfitsio][source]] 
+
+** Plans
+
+*** TODO Break out wfitsutils.f90 into a submodule
+Would make sense, since I use it in other projects too. But I need to
+learn how git submodules work. They look a bit scary. 
+*** TODO Support MPI version of AH3 file format
