@@ -1,0 +1,6 @@
+*.o
+*.mod
+/src/ah3doctor
+/src/ah3rebin
+/src/ah3test
+/src/ah3tofits

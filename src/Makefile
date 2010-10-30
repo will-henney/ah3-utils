@@ -11,6 +11,10 @@ all: $(EXECS)
 clean: 
 	rm -fr $(EXECS) *.o *.mod
 
+.SUFFIXES: .f90
+.f90.o:  
+	$(F90C) $(F90FLAGS) -c $<
+
 ah3test.o: ah3mod.o
 ah3doctor.o: ah3mod.o
 ah3rebin.o: ah3mod.o
