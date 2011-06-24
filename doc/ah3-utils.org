@@ -101,7 +101,8 @@ LFITS=/usr/local/lib/libcfitsio.a
 
 ** Plans
 
-*** TODO Break out wfitsutils.f90 into a submodule
+*** TODO [#B] Break out wfitsutils.f90 into a submodule
 Would make sense, since I use it in other projects too. But I need to
 learn how git submodules work. They look a bit scary. 
-*** TODO Support MPI version of AH3 file format
+*** TODO [#C] Support MPI version of AH3 file format
+This is low priority since I don't need it myself
